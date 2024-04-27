@@ -1,46 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import Typewriter from 'typewriter-effect';
-import Fade from 'react-reveal';
-import endpoints from '../constants/endpoints';
-import Social from './Social';
-import FallbackSpinner from './FallbackSpinner';
+import React, { useState, useEffect, useContext } from "react";
+import Typewriter from "typewriter-effect";
+import Fade from "react-reveal";
+import Social from "./Social";
+import styled, { ThemeContext } from "styled-components";
 
-const styles = {
-  nameStyle: {
-    fontSize: '5em',
-  },
-  inlineChild: {
-    display: 'inline-block',
-  },
-  mainContainer: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-};
+const MainContainer = styled.div`
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const UserName = styled.h1`
+  font-size: 5em;
+  font-weight: bold;
+  color: ${(props) => props.theme.mainColorTheme};
+`;
+
+const IamText = styled.h2`
+  display: inline-block;
+`;
 
 function Home() {
+  const theme = useContext(ThemeContext);
 
-  return  (
+  return (
     <Fade>
-      <div style={styles.mainContainer}>
-        <h1 style={styles.nameStyle}>{"Bharat Dave"}</h1>
-        <div style={{ flexDirection: 'row' }}>
-          <h2 style={styles.inlineChild}>I&apos;m&nbsp;</h2>
+      <MainContainer>
+        <UserName theme={theme}>Bharat Dave</UserName>
+        <div style={{ flexDirection: "row" }}>
+          <IamText>I&apos;m&nbsp;</IamText>
           <Typewriter
             options={{
               loop: true,
               autoStart: true,
-              strings: ["a Web Developer","a Programmer","a MERN Stack Aficionado"],
+              strings: [
+                "a Web Developer",
+                "a Programmer",
+                "a Software Developer",
+                "a MERN Stack Developer",
+              ],
             }}
           />
         </div>
         <Social />
-      </div>
+      </MainContainer>
     </Fade>
-  ) 
+  );
 }
 
 export default Home;

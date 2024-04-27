@@ -35,7 +35,7 @@
 
  .navbar__link:hover::after {
   visibility: visible;
-  width: 40%;
+  width: 100%;
 }
 
 .navbar__link--active::after {
@@ -72,12 +72,14 @@
 
 .Typewriter__wrapper {
   font-size: xx-large;
+  color: #14d9c7;
   font-weight: bold;
 }
 
 .Typewriter__cursor {
   font-size: xx-large;
   font-weight: bold;
+  color: #14d9c7;
 }
 
 section.timeline-card-content {

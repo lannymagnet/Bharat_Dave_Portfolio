@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { SocialIcon } from 'react-social-icons';
-import { ThemeContext } from 'styled-components';
-import endpoints from '../constants/endpoints';
+import React, { useEffect, useState, useContext } from "react";
+import { SocialIcon } from "react-social-icons";
+import { ThemeContext } from "styled-components";
 
 const styles = {
   iconStyle: {
@@ -11,22 +10,27 @@ const styles = {
   },
 };
 
+let socialData = [
+  {
+    network: "linkedin",
+    href: "https://www.linkedin.com/in/b-dave/",
+  },
+  {
+    network: "github",
+    href: "https://github.com/lannymagnet",
+  },
+  {
+    network: "email",
+    href: "mailto:bharatdave00@gmail.com",
+  },
+];
+
 function Social() {
   const theme = useContext(ThemeContext);
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch(endpoints.social, {
-      method: 'GET',
-    })
-      .then((res) => res.json())
-      .then((res) => setData(res))
-      .catch((err) => err);
-  }, []);
 
   return (
     <div className="social">
-      {data ? data.social.map((social) => (
+      {socialData.map((social) => (
         <SocialIcon
           key={social.network}
           style={styles.iconStyle}
@@ -36,7 +40,7 @@ function Social() {
           target="_blank"
           rel="noopener"
         />
-      )) : null}
+      ))}
     </div>
   );
 }
