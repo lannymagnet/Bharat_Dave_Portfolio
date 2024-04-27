@@ -22,35 +22,25 @@ const styles = {
 };
 
 function Home() {
-  const [data, setData] = useState(null);
 
-  useEffect(() => {
-    fetch(endpoints.home, {
-      method: 'GET',
-    })
-      .then((res) => res.json())
-      .then((res) => setData(res))
-      .catch((err) => err);
-  }, []);
-
-  return data ? (
+  return  (
     <Fade>
       <div style={styles.mainContainer}>
-        <h1 style={styles.nameStyle}>{data?.name}</h1>
+        <h1 style={styles.nameStyle}>{"Bharat Dave"}</h1>
         <div style={{ flexDirection: 'row' }}>
           <h2 style={styles.inlineChild}>I&apos;m&nbsp;</h2>
           <Typewriter
             options={{
               loop: true,
               autoStart: true,
-              strings: data?.roles,
+              strings: ["a Web Developer","a Programmer","a MERN Stack Aficionado"],
             }}
           />
         </div>
         <Social />
       </div>
     </Fade>
-  ) : <FallbackSpinner />;
+  ) 
 }
 
 export default Home;
