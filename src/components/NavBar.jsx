@@ -1,19 +1,9 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import React, { useEffect, useState, useContext } from 'react';
-import { withRouter } from 'react-router';
-import { NavLink } from 'react-router-dom';
-import styled, { ThemeContext } from 'styled-components';
-import endpoints from '../constants/endpoints';
-import ThemeToggler from './ThemeToggler';
-
-const styles = {
-  logoStyle: {
-    width: 50,
-    height: 40,
-  },
-};
-
-
+import { Navbar, Nav, Container } from "react-bootstrap";
+import React, { useState, useContext } from "react";
+import { withRouter } from "react-router";
+import { NavLink } from "react-router-dom";
+import styled, { ThemeContext } from "styled-components";
+import ThemeToggler from "./ThemeToggler";
 
 const InternalNavLink = styled(NavLink)`
   color: ${(props) => props.theme.navbarTheme.linkColor};
@@ -28,19 +18,44 @@ const InternalNavLink = styled(NavLink)`
   }
 `;
 
+const BrandSpan = styled.span`
+  color: ${(props) => props.theme.mainColorTheme};
+`;
+
 const NavBar = () => {
   const theme = useContext(ThemeContext);
-  const [data, setData] = useState(null);
   const [expanded, setExpanded] = useState(false);
 
-  useEffect(() => {
-    fetch(endpoints.navbar, {
-      method: 'GET',
-    })
-      .then((res) => res.json())
-      .then((res) => setData(res))
-      .catch((err) => err);
-  }, []);
+  let NavBarDataSection = [
+    {
+      title: "Home",
+      href: "/",
+    },
+    {
+      title: "About",
+      href: "/about",
+    },
+    {
+      title: "Skills",
+      href: "/skills",
+    },
+    {
+      title: "Education",
+      href: "/education",
+    },
+    {
+      title: "Experience",
+      href: "/experience",
+    },
+    {
+      title: "Projects",
+      href: "/projects",
+    },
+    {
+      title: "Resume",
+      href: "/resume",
+    },
+  ];
 
   return (
     <Navbar
@@ -52,20 +67,9 @@ const NavBar = () => {
       expanded={expanded}
     >
       <Container>
-        {data?.logo && (
-          <Navbar.Brand href="/">
-            <img
-              src={data?.logo?.source}
-              className="d-inline-block align-top"
-              alt="main logo"
-              style={
-                data?.logo?.height && data?.logo?.width
-                  ? { height: data?.logo?.height, width: data?.logo?.width }
-                  : styles.logoStyle
-              }
-            />
-          </Navbar.Brand>
-        )}
+        <Navbar.Brand href="/">
+          <BrandSpan theme={theme}>{"<Bharat Dave />"}</BrandSpan>
+        </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
           onClick={() => setExpanded(!expanded)}
@@ -73,36 +77,21 @@ const NavBar = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto" />
           <Nav>
-            {data
-              && data.sections?.map((section, index) => (section?.type === 'link' ? (
-                <ExternalNavLink
-                  key={section.title}
-                  href={section.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setExpanded(false)}
-                  className="navbar__link"
-                  theme={theme}
-                >
-                  {section.title}
-                </ExternalNavLink>
-              ) : (
-                <InternalNavLink
-                  key={section.title}
-                  onClick={() => setExpanded(false)}
-                  exact={index === 0}
-                  activeClassName="navbar__link--active"
-                  className="navbar__link"
-                  to={section.href}
-                  theme={theme}
-                >
-                  {section.title}
-                </InternalNavLink>
-              )))}
+            {NavBarDataSection?.map((section, index) => (
+              <InternalNavLink
+                key={section.title}
+                onClick={() => setExpanded(false)}
+                exact={index === 0}
+                activeClassName="navbar__link--active"
+                className="navbar__link"
+                to={section.href}
+                theme={theme}
+              >
+                {section.title}
+              </InternalNavLink>
+            ))}
           </Nav>
-          <ThemeToggler
-            onClick={() => setExpanded(false)}
-          />
+          <ThemeToggler onClick={() => setExpanded(false)} />
         </Navbar.Collapse>
       </Container>
     </Navbar>
