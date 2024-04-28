@@ -6,6 +6,7 @@ import NavBarWithRouter from './components/NavBar';
 import Home from './components/Home';
 import About from "./components/About";
 import Resume from "./components/Resume";
+import Experience from './components/Experience';
 
 function MainApp() {
   return (
@@ -17,6 +18,7 @@ function MainApp() {
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
             <Route path="/resume" component={Resume} />
+            <Route path="/experience" component={Experience} />
           </Suspense>
         </Switch>
       </main>

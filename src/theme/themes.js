@@ -5,6 +5,7 @@ export const lightTheme = {
   cardBackground: '#fff',
   mainColorTheme:"#14d9c7",
   cardFooterBackground: '#f7f7f7',
+  timeLineColor:"#000000",
   cardBorderColor: '#00000020',
   navbarTheme: {
     linkColor: '#dedede',
@@ -21,6 +22,7 @@ export const darkTheme = {
   color: '#eee',
   accentColor: '#14d9c7',
   cardBackground: '#060606',
+  timeLineColor:"#ffffff",
   cardFooterBackground: '#181818',
   mainColorTheme:"#14d9c7",
   cardBorderColor: '#ffffff20',
