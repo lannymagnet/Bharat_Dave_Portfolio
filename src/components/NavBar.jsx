@@ -40,10 +40,6 @@ const NavBar = () => {
       href: "/skills",
     },
     {
-      title: "Education",
-      href: "/education",
-    },
-    {
       title: "Experience",
       href: "/experience",
     },

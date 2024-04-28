@@ -3,7 +3,7 @@ import { Container, Col, Row } from "react-bootstrap";
 import PropTypes from "prop-types";
 import Fade from "react-reveal";
 import Header from "./Header";
-import AboutImage from "../assets/profile.png";
+import AboutImage from "../assets/aboutMe.svg";
 import styled, { ThemeContext } from "styled-components";
 
 const TextContainer = styled(Col)`
@@ -35,6 +35,10 @@ const TitleText = styled.p`
 const ColorSpan = styled.span`
   font-weight: bold;
   color: ${(props) => props.theme.mainColorTheme};
+`;
+
+const AboutMeImage = styled.img`
+  transform: scaleX(-1);
 `;
 
 function About(props) {
@@ -76,7 +80,7 @@ function About(props) {
                 </TextPara>
               </TextContainer>
               <ImageContainer>
-                <img src={AboutImage} alt="profile" />
+                <AboutMeImage src={AboutImage} alt="profile" />
               </ImageContainer>
             </Row>
           </Fade>
