@@ -1,10 +1,11 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, {Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import FallbackSpinner from './components/FallbackSpinner';
 import NavBarWithRouter from './components/NavBar';
 import Home from './components/Home';
-import About from "./components/About"
+import About from "./components/About";
+import Resume from "./components/Resume";
 
 function MainApp() {
   return (
@@ -15,6 +16,7 @@ function MainApp() {
           <Suspense fallback={<FallbackSpinner />}>
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
+            <Route path="/resume" component={Resume} />
           </Suspense>
         </Switch>
       </main>
