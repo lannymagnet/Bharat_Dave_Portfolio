@@ -13,16 +13,54 @@ import ChatbotIcon from "../assets/Chatbot.png";
 import InternshipIcon from "../assets/InternshipLogo.png";
 
 import "react-vertical-timeline-component/style.min.css";
-import "../css/experience.css";
 
 const TimelineImage = styled.img`
   max-height: 60px;
   max-width: 60px;
+  @media (max-width: 1170px) {
+    max-height: 25px;
+    max-width: 25px;
+  }
 `;
 
 const WebDevImage = styled.img`
   max-height: 40px;
   max-width: 40px;
+  @media (max-width: 1170px) {
+    max-height: 35px;
+    max-width: 35px;
+  }
+`;
+
+const StyledVerticalTimelineElement = styled(VerticalTimelineElement)`
+  & .dateDiv {
+    color: ${(props) => props.theme.timeLineColor};
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+
+    @media only screen and (min-width: 1170px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity:1 !important;
+      height: 100%;
+      font-size: 3rem !important;
+      text-align: center !important;
+    }
+    @media only screen and (max-width: 1170px) {
+      width: 100%;
+      font-size: 1.5rem;
+    }
+  }
+`;
+
+const Title = styled.h3`
+  font-weight: bold;
+`;
+
+const Subtitle = styled.h4`
+  text-decoration: underline;
 `;
 
 function Experience(props) {
@@ -77,27 +115,32 @@ function Experience(props) {
         <Container>
           <VerticalTimeline lineColor={theme.timeLineColor}>
             {timeline.map((t, i) => {
-              const contentStyle = { background: "#14d9c7", color: "#fff" };
+              const contentStyle = {
+                background: "#14d9c7",
+                color: `${theme.timeLineColor}`,
+              };
               const arrowStyle = { borderRight: "7px solid #14d9c7" };
               return (
-                <VerticalTimelineElement
+                <StyledVerticalTimelineElement
+                  theme={theme}
                   key={i}
                   className="vertical-timeline-element--work"
                   contentStyle={contentStyle}
+                  dateClassName={"dateDiv"}
                   contentArrowStyle={arrowStyle}
                   date={t.date}
                   {...t.icon}
                 >
                   <React.Fragment>
-                    <h3 className="vertical-timeline-element-title">
+                    <Title className="vertical-timeline-element-title">
                       {t.title}
-                    </h3>
-                    <h4 className="vertical-timeline-element-subtitle">
+                    </Title>
+                    <Subtitle className="vertical-timeline-element-subtitle">
                       {t.subtitle}
-                    </h4>
+                    </Subtitle>
                     <p>{t.desc}</p>
                   </React.Fragment>
-                </VerticalTimelineElement>
+                </StyledVerticalTimelineElement>
               );
             })}
           </VerticalTimeline>
