@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Container } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { ThemeContext } from "styled-components";
-import Header from "./Header";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -65,7 +64,6 @@ const Subtitle = styled.h4`
 
 function Experience(props) {
   const theme = useContext(ThemeContext);
-  const { header } = props;
 
   const iconStyle = {
     boxShadow: `0 0 0 4px ${theme.timeLineColor} ,inset 0 2px 0 rgba(0,0,0,.08),0 3px 0 4px rgba(0,0,0,.05)`,
@@ -110,7 +108,6 @@ function Experience(props) {
 
   return (
     <>
-      <Header title={header} />
       <div className="section-content-container">
         <Container>
           <VerticalTimeline lineColor={theme.timeLineColor}>
@@ -149,9 +146,5 @@ function Experience(props) {
     </>
   );
 }
-
-Experience.propTypes = {
-  header: PropTypes.string.isRequired,
-};
 
 export default Experience;

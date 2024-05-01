@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { Container, Col, Row } from "react-bootstrap";
-import PropTypes from "prop-types";
 import Fade from "react-reveal";
-import Header from "./Header";
 import AboutImage from "../assets/aboutMe.svg";
 import styled, { ThemeContext } from "styled-components";
 
@@ -42,12 +40,10 @@ const AboutMeImage = styled.img`
 `;
 
 function About(props) {
-  const { header } = props;
   const theme = useContext(ThemeContext);
 
   return (
     <>
-      <Header title={header} />
       <div className="section-content-container">
         <Container>
           <Fade>
@@ -89,9 +85,5 @@ function About(props) {
     </>
   );
 }
-
-About.propTypes = {
-  header: PropTypes.string.isRequired,
-};
 
 export default About;
