@@ -82,26 +82,6 @@
   color: #14d9c7;
 }
 
-section.timeline-card-content {
-  justify-content: center;
-}
-
-section.timeline-card-content p.card-title {
-  font-size: 1.5em;
-  margin-top: 25px;
-}
-
-section.timeline-card-content p.card-sub-title {
-  font-size: 1.25em;
-  margin-top: 10px;
-}
-
-section.timeline-card-content div.card-description > p {
-  font-size: 1.1em;
-  margin-top: 10px;
-  font-weight: 500;
-}
-
 .social {
   position: relative;
   margin-top: 60px;
@@ -143,10 +123,3 @@ section.timeline-card-content div.card-description > p {
     width: 0;
   }
 }
-
-.header {
-  font-size: 3em;
-  font-weight: bold;
-  margin-bottom: 25px;
-}
-

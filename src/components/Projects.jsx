@@ -3,7 +3,6 @@ import { Container, Row, Button } from 'react-bootstrap';
 import { ThemeContext } from 'styled-components';
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal/Fade';
-import Header from './Header';
 import endpoints from '../constants/endpoints';
 import ProjectCard from './projects/ProjectCard';
 import FallbackSpinner from './FallbackSpinner';
@@ -19,7 +18,6 @@ const styles = {
 
 const Projects = (props) => {
   const theme = useContext(ThemeContext);
-  const { header } = props;
   const [data, setData] = useState(null);
   const [showMore, setShowMore] = useState(false);
 
@@ -34,7 +32,6 @@ const Projects = (props) => {
   const numberOfItems = showMore && data ? data.length : 6;
   return (
     <>
-      <Header title={header} />
       {data
         ? (
           <div className="section-content-container">

@@ -7,6 +7,7 @@ import Home from './components/Home';
 import About from "./components/About";
 import Resume from "./components/Resume";
 import Experience from './components/Experience';
+import Skills from "./components/Skills";
 
 function MainApp() {
   return (
@@ -19,6 +20,7 @@ function MainApp() {
             <Route path="/about" component={About} />
             <Route path="/resume" component={Resume} />
             <Route path="/experience" component={Experience} />
+            <Route path="/skills" component={Skills} />
           </Suspense>
         </Switch>
       </main>
